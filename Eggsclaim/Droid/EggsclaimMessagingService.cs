@@ -4,6 +4,8 @@ using Android.Content;
 using Android.Util;
 using Firebase.Messaging;
 
+using Eggsclaim.Models;
+
 namespace Eggsclaim.Droid
 {
     [Service]
@@ -23,6 +25,29 @@ namespace Eggsclaim.Droid
                 return;
             }
             Log.Debug(TAG, $"Message received: {messageTimestamp}, {eggPresent}");
+            var status = new EggsStatusUpdate(messageTimestamp, eggPresent);
+            SendLocalNotification(status);
+        }
+        
+        private void SendLocalNotification(EggsStatusUpdate status)
+        {
+            string title = (status.EggsPresent) ? "Cock-a-doodle-doo!" : "Enjoy your eggs!";
+            string timestamp = status.Timestamp.ToLocalTime().ToString("hh:mm tt dddd, MMMM d");
+            string message = (status.EggsPresent) ? $"An egg is waiting for you! {timestamp}" : $"Collected at {timestamp}";
+            
+            var intent = new Intent(this, typeof(MainActivity));
+            intent.AddFlags(ActivityFlags.ClearTop);
+            var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
+
+            var notificationBuilder = new Notification.Builder(this)
+                .SetSmallIcon(Resource.Drawable.xamarin_logo)
+                .SetContentTitle(title)
+                .SetContentText(message)
+                .SetAutoCancel(true)
+                .SetContentIntent(pendingIntent);
+        
+            var notificationManager = NotificationManager.FromContext(this);
+            notificationManager.Notify(0, notificationBuilder.Build());
         }
     }
 }
