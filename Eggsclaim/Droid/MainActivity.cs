@@ -8,6 +8,8 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+using Firebase.Messaging;
+
 namespace Eggsclaim.Droid
 {
     [Activity(Label = "Eggsclaim.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -19,6 +21,8 @@ namespace Eggsclaim.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
+
+            FirebaseMessaging.Instance.SubscribeToTopic("updates");
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
