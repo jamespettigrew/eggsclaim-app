@@ -5,11 +5,13 @@ using System.Runtime.CompilerServices;
 
 using Xamarin.Forms;
 
+using Eggsclaim.Models;
+
 namespace Eggsclaim
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+        public IDataStore<EggsStatusUpdate> DataStore => DependencyService.Get<IDataStore<EggsStatusUpdate>>() ?? new MockDataStore();
 
         bool isBusy = false;
         public bool IsBusy

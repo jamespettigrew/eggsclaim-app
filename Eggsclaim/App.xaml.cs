@@ -13,10 +13,7 @@ namespace Eggsclaim
         {
             InitializeComponent();
 
-            if (UseMockDataStore)
-                DependencyService.Register<MockDataStore>();
-            else
-                DependencyService.Register<CloudDataStore>();
+            DependencyService.Register<MockDataStore>();
 
             if (Device.RuntimePlatform == Device.iOS)
                 MainPage = new MainPage();
