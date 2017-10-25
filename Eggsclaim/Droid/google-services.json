@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "691151224869",
+    "firebase_url": "https://eggsclaim.firebaseio.com",
+    "project_id": "eggsclaim",
+    "storage_bucket": "eggsclaim.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691151224869:android:c7a2d7f5d93ca5cb",
+        "android_client_info": {
+          "package_name": "com.innovum.eggsclaim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691151224869-vat6k662r51suqp0okgiceou22crsu7i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgFf_equ5Wr-Lwge2qeP2hHMskoM1AK4Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
