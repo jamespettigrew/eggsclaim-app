@@ -20,9 +20,14 @@
       <DependentUpon>LogPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)InfiniteListView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ValueConverters\PresenceConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ValueConverters\TimestampConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LogPage.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)ValueConverters\" />
   </ItemGroup>
 </Project>

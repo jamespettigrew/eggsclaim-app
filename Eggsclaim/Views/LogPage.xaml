@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:Eggsclaim" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Eggsclaim.LogPage" Title="{Binding Title}" x:Name="BrowseItemsPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:Eggsclaim" xmlns:converters="clr-namespace:Eggsclaim.ValueConverters;" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Eggsclaim.LogPage" Title="{Binding Title}" x:Name="BrowseItemsPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:PresenceConverter x:Key="Presence"></converters:PresenceConverter>
+            <converters:TimestampConverter x:Key="Timestamp"></converters:TimestampConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 	<ContentPage.Content>
 		<StackLayout>
 			<local:InfiniteListView x:Name="ItemsListView" ItemsSource="{Binding LogItems}" VerticalOptions="FillAndExpand" HasUnevenRows="true" IsPullToRefreshEnabled="false" IsRefreshing="{Binding IsBusy, Mode=OneWay}" LoadMoreCommand="{Binding LoadOlderItemsCommand}">>
@@ -7,8 +13,8 @@
 					<DataTemplate>
 						<ViewCell>
 							<StackLayout Padding="10">
-								<Label Text="{Binding SequenceId}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
-								<Label Text="{Binding Description}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+								<Label Text="{Binding EggsPresent, Converter={StaticResource Presence}}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+								<Label Text="{Binding Timestamp, Converter={StaticResource Timestamp}}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
 							</StackLayout>
 						</ViewCell>
 					</DataTemplate>
