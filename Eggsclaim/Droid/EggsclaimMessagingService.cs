@@ -45,6 +45,8 @@ namespace Eggsclaim.Droid
             var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
 
             var notificationBuilder = new Notification.Builder(this)
+                .SetVibrate(new long[] { 0, 500, 500, 500 })
+                .SetLights(Android.Graphics.Color.Yellow, 300, 100)
                 .SetSmallIcon(Resource.Drawable.xamarin_logo)
                 .SetContentTitle(title)
                 .SetContentText(message)
