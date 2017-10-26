@@ -1,8 +1,10 @@
 ﻿using System;
+
 using Android.App;
 using Android.Content;
 using Android.Util;
 using Firebase.Messaging;
+using Xamarin.Forms;
 
 using Eggsclaim.Models;
 
@@ -12,24 +14,27 @@ namespace Eggsclaim.Droid
     [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
     public class EggsclaimMessagingService : FirebaseMessagingService
     {
+        private LogDataStore DataStore => DependencyService.Get<LogDataStore>();
+    
         const string TAG = "EggsclaimMsgService";
         public override void OnMessageReceived(RemoteMessage message)
         {
             message.Data.TryGetValue("timestamp", out string timestampStr);
             message.Data.TryGetValue("egg_present", out string eggPresentStr);
 
-            if (!DateTime.TryParse(timestampStr, out DateTime messageTimestamp) ||
+            if (!DateTime.TryParse(timestampStr, out DateTime timestamp) ||
                (!Boolean.TryParse(eggPresentStr, out bool eggPresent)))
             {
                 Log.Debug(TAG, $"Message received: INVALID");
                 return;
             }
-            Log.Debug(TAG, $"Message received: {messageTimestamp}, {eggPresent}");
-            var status = new EggsStatusUpdate(messageTimestamp, eggPresent);
+            Log.Debug(TAG, $"Message received: {timestamp}, {eggPresent}");
+            var status = new EggsStatus() { Timestamp = timestamp, EggsPresent = eggPresent };
+            DataStore.AddItemAsync(status);
             SendLocalNotification(status);
         }
         
-        private void SendLocalNotification(EggsStatusUpdate status)
+        private void SendLocalNotification(EggsStatus status)
         {
             string title = (status.EggsPresent) ? "Cock-a-doodle-doo!" : "Enjoy your eggs!";
             string timestamp = status.Timestamp.ToLocalTime().ToString("hh:mm tt dddd, MMMM d");
@@ -44,6 +49,7 @@ namespace Eggsclaim.Droid
                 .SetContentTitle(title)
                 .SetContentText(message)
                 .SetAutoCancel(true)
+                .SetStyle(new Notification.BigTextStyle())
                 .SetContentIntent(pendingIntent);
         
             var notificationManager = NotificationManager.FromContext(this);

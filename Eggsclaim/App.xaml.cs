@@ -6,19 +6,12 @@ namespace Eggsclaim
 {
     public partial class App : Application
     {
-        public static bool UseMockDataStore = true;
-        public static string BackendUrl = "https://localhost:5000";
-
         public App()
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
-
-            if (Device.RuntimePlatform == Device.iOS)
-                MainPage = new MainPage();
-            else
-                MainPage = new NavigationPage(new MainPage());
+            DependencyService.Register<LogDataStore>();
+            MainPage = new NavigationPage(new LogPage());
         }
     }
 }

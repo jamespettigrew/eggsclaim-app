@@ -11,8 +11,6 @@ namespace Eggsclaim
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<EggsStatusUpdate> DataStore => DependencyService.Get<IDataStore<EggsStatusUpdate>>() ?? new MockDataStore();
-
         bool isBusy = false;
         public bool IsBusy
         {
