@@ -170,14 +170,23 @@
     <Compile Include="EggsclaimMessagingService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icon.png" />
-    <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
     <AndroidResource Include="Resources\layout\Toolbar.axml" />
     <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_shortcut_moo_egg_icon_notification.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_stat_moo_egg_icon_notification.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_shortcut_moo_egg_icon_notification.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_stat_moo_egg_icon_notification.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_shortcut_moo_egg_icon_notification.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_stat_moo_egg_icon_notification.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_shortcut_moo_egg_icon_notification.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_stat_moo_egg_icon_notification.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_shortcut_moo_egg_icon_notification.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_stat_moo_egg_icon_notification.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>
     <GoogleServicesJson Include="google-services.json" />
